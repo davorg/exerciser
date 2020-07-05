@@ -1,4 +1,4 @@
-<% IF ! done.empty -%>
+<% IF done.size -%>
 <h2>Done this week</h2>
 <table class="table">
 <%   FOR exercise IN done -%>
@@ -7,7 +7,7 @@
 </table>
 <% END -%>
 
-<% IF ! today.empty -%>
+<% IF today.size -%>
 <h2>Done today</h2>
 <table class="table">
 <%   FOR exercise IN today -%>
@@ -16,7 +16,7 @@
 </table>
 <% END -%>
 
-<% IF ! todo.empty -%>
+<% IF todo.size -%>
 <h2>To do today</h2>
 <form action="/do">
 <table class="table">
