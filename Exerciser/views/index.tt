@@ -1,16 +1,33 @@
 <% IF ! done.empty -%>
-<h1>Done this week</h1>
-<p><% done.size %></p>
-<ul>
+<h2>Done this week</h2>
+<table class="table">
 <%   FOR exercise IN done -%>
-  <li><% exercise.type %> / <% exercise.description %> (<% exercise.done_on %>)</li>
+  <tr><td><% exercise.type %></td><td><% exercise.description %></td><td><% int2day(exercise.done_on) %></td></tr>
 <%   END -%>
-</ul>
+</table>
 <% END -%>
 
-<h1>To do today</h1>
-<ul>
-<%   FOR exercise IN todo -%>
-  <li><% exercise.type %> / <% exercise.description %> (<% exercise.done_on %>)</li>
+<% IF ! today.empty -%>
+<h2>Done today</h2>
+<table class="table">
+<%   FOR exercise IN today -%>
+  <tr><td><% exercise.type %></td><td><% exercise.description %></td></tr>
 <%   END -%>
-</ul>
+</table>
+<% END -%>
+
+<% IF ! todo.empty -%>
+<h2>To do today</h2>
+<form action="/do">
+<table class="table">
+<%   FOR exercise IN todo -%>
+  <tr><td><% exercise.type %></td><td><% exercise.description %>
+    <input type="hidden" name="exercise" value="<% exercise.id %>"></td></tr>
+<%   END -%>
+</table>
+<button type="submit" class="btn btn-primary">Do these</button>
+</form>
+<%   IF options -%>
+<p><form action="/redo"><button type="submit" class="btn btn-secondary">Regenerate</button></form></p>
+<%   END -%>
+<% END -%>

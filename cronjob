@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Exerciser::Schema;
+
+my $sch = Exerciser::Schema->get_schema;
+
+$sch->resultset('Exercise')->update({
+  done_on => 0,
+});
