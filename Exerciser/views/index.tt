@@ -1,0 +1,16 @@
+<% IF ! done.empty -%>
+<h1>Done this week</h1>
+<p><% done.size %></p>
+<ul>
+<%   FOR exercise IN done -%>
+  <li><% exercise.type %> / <% exercise.description %> (<% exercise.done_on %>)</li>
+<%   END -%>
+</ul>
+<% END -%>
+
+<h1>To do today</h1>
+<ul>
+<%   FOR exercise IN todo -%>
+  <li><% exercise.type %> / <% exercise.description %> (<% exercise.done_on %>)</li>
+<%   END -%>
+</ul>
