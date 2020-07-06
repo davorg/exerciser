@@ -31,3 +31,8 @@
 <p><form action="/redo"><button type="submit" class="btn btn-secondary">Regenerate</button></form></p>
 <%   END -%>
 <% END -%>
+
+<% IF !today.size AND !todo.size -%>
+<p>There are no more exercises left to do this week.</p>
+<p>Have rest instead.</p>
+<% END -%>

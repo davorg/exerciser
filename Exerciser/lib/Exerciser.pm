@@ -8,6 +8,8 @@ use Exerciser::Schema;
 our $VERSION = '0.1';
 
 get '/' => sub {
+  my $exercises_per_day = 2;
+
   my $sch = Exerciser::Schema->get_schema;
 
   # day_of_week returns 0 (Sun) to 6 (Sat)
@@ -34,9 +36,9 @@ get '/' => sub {
 
   @todo = shuffle @todo;
 
-  my $options = @todo > 2;
+  my $options = @todo > $exercises_per_day;
 
-  $#todo = 1 if @todo > 2;
+  $#todo = $exercises_per_day - 1 if @todo > $exercises_per_day;
 
   if (@today) {
     @todo = ();
