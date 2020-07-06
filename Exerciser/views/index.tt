@@ -2,7 +2,7 @@
 <h2>Done this week</h2>
 <table class="table">
 <%   FOR exercise IN done -%>
-  <tr><td><% exercise.type %></td><td><% exercise.description %></td><td><% int2day(exercise.done_on) %></td></tr>
+  <tr><td><% int2day(exercise.done_on) %></td><td><% exercise.description %></td></tr>
 <%   END -%>
 </table>
 <% END -%>
@@ -11,7 +11,7 @@
 <h2>Done today</h2>
 <table class="table">
 <%   FOR exercise IN today -%>
-  <tr><td><% exercise.type %></td><td><% exercise.description %></td></tr>
+  <tr><td><% exercise.description %></td></tr>
 <%   END -%>
 </table>
 <% END -%>
@@ -21,7 +21,7 @@
 <form action="/do">
 <table class="table">
 <%   FOR exercise IN todo -%>
-  <tr><td><% exercise.type %></td><td><% exercise.description %>
+  <tr><td><% exercise.description %>
     <input type="hidden" name="exercise" value="<% exercise.id %>"></td></tr>
 <%   END -%>
 </table>
